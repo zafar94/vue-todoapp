@@ -25,11 +25,6 @@ const addTodo = () => {
     done: false,
     createdAt: new Date().getTime()
   })
-
-  // input_content.value = ''
-  // input_category.value = null
-
-  // console.log('todos', todos.value)
 }
 
 const removeTodo = (todo) => {
@@ -88,7 +83,11 @@ onMounted(() => {
     <section class="todo-list">
       <h3>TODO LIST</h3>
       <div class="list"></div>
-      <div v-for="todo in todos_asc" :class="`todo-item ${todo.done && 'done'}`">
+      <div
+        v-for="todo in todos_asc"
+        :class="`todo-item ${todo.done && 'done'}`"
+        :key="todo.createdAt"
+      >
         <label>
           <input type="checkbox" v-model="todo.done" />
           <span :class="`bubble ${todo.category}`"></span>
